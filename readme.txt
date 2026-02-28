@@ -18,6 +18,7 @@ mvn archetype:generate -DgroupId=com.example -DartifactId=persistence -Darchetyp
 
 mvn archetype:generate -DgroupId=com.example -DartifactId=frontend -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
+mklink /D node_modules "D:\programs\angular18\node_modules"
 
 ng new frontend --directory frontend --skip-install
 
