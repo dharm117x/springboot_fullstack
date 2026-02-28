@@ -20,7 +20,9 @@ mvn archetype:generate -DgroupId=com.example -DartifactId=frontend -DarchetypeAr
 
 mklink /D node_modules "D:\programs\angular18\node_modules"
 
-ng new frontend --directory frontend --skip-install
+ng new frontend --directory frontend --skip-install --skip-git
+
+mvn clean package -Pmaven-node
 
 crrate repo on server and link to repos:
 
