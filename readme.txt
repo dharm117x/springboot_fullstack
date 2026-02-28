@@ -21,14 +21,21 @@ mvn archetype:generate -DgroupId=com.example -DartifactId=frontend -DarchetypeAr
 
 ng new frontend --directory frontend --skip-install
 
+crrate repo on server and link to repos:
+
+D:\projects\springboot_fullstack
+
+echo "# springboot_fullstack" >> README.md
 git init
-
-git config --global core.autocrlf true
-
-git config --global core.autocrlf input //linux
-
-git status
-
+git add README.md
 git add .
+git commit -m "first commit"
+git branch -M master
+git remote add origin https://github.com/dharm117x/springboot_fullstack.git
+git push -u origin master
+
+
+
+
 
 
