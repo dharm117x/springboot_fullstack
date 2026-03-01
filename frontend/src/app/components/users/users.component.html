@@ -1,16 +1,80 @@
-<h2>User Details</h2>
+<div class="container mt-4">
+  <!-- Add User Form -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Add New User</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="addUser()" class="row g-3">
+        <div class="col-md-4">
+          <input [(ngModel)]="newUser.name" name="name" class="form-control" placeholder="Name" required>
+        </div>
+        <div class="col-md-4">
+          <input [(ngModel)]="newUser.email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="col-md-4">
+          <input [(ngModel)]="newUser.phone" name="phone" class="form-control" placeholder="Phone" required>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Add User</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-<form (ngSubmit)="addUser()">
-  <input [(ngModel)]="newUser.name" name="name" placeholder="Name" required>
-  <input [(ngModel)]="newUser.email" name="email" placeholder="Email" required>
-  <input [(ngModel)]="newUser.phone" name="phone" placeholder="Phone" required>
-  <button type="submit">Add User</button>
-</form>
+  <hr class="my-4">
 
-<ul>
-  <li *ngFor="let user of users">
-    {{ user.name }} - {{ user.email }} - {{ user.phone }}
-    <button (click)="updateUser(user)">Update</button>
-    <button (click)="deleteUser(user.id)">Delete</button>
-  </li>
-</ul>
+  <!-- User List -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">User List</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" (click)="updateUser(user)">Update</button>
+              <button *ngIf="user.id" class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Update Form -->
+  <div *ngIf="selectUser && selectUser.id" class="card mt-4">
+    <div class="card-header">
+      <h2 class="card-title">Update User :: {{ selectUser.name }}</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="updateUser(selectUser)" class="row g-3">
+        <div class="col-md-4">
+          <input [(ngModel)]="selectUser.name" name="name" class="form-control" placeholder="Name" required>
+        </div>
+        <div class="col-md-4">
+          <input [(ngModel)]="selectUser.email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="col-md-4">
+          <input [(ngModel)]="selectUser.phone" name="phone" class="form-control" placeholder="Phone" required>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-success me-2">Save Changes</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelEdit(selectUser)">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
