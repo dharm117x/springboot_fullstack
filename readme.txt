@@ -24,6 +24,8 @@ ng new frontend --directory frontend --skip-install --skip-git
 
 mvn clean package -Pmaven-node
 
+mvn spring-boot:run
+
 crrate repo on server and link to repos:
 
 D:\projects\springboot_fullstack

@@ -1,12 +1,15 @@
 package com.example.service;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entity.User;
 import com.example.repository.UserRepository;
 
+
 import java.util.List;
 
 @Service
+@Transactional
 public class UserService {
     private final UserRepository userRepository;
 
