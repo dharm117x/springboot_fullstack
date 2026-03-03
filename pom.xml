@@ -30,18 +30,26 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!-- Explicit Mockito dependency (optional, if you want a specific version) -->
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>3.8.1</version>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>5.11.0</version>
+				<!-- works with Spring Boot 3.5 -->
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+		<!-- Spring Boot Starter Test (includes JUnit, Mockito, AssertJ, etc.) -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

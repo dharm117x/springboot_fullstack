@@ -22,6 +22,8 @@ mklink /D node_modules "D:\programs\angular18\node_modules"
 
 ng new frontend --directory frontend --skip-install --skip-git
 
+npm install bootstrap
+
 mvn clean package -Pmaven-node
 
 mvn spring-boot:run
