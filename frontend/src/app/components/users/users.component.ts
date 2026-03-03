@@ -12,9 +12,10 @@ import { CommonModule } from '@angular/common';
     styleUrl: './users.component.css'
 })
 export class UserComponent implements OnInit {
+    edit: boolean = false;
     users: User[] = [];
     newUser: User = { name: '', email: '', phone: '' };
-	selectUser: User = { name: '', email: '', phone: '' };
+    selectUser: User = { name: '', email: '', phone: '' };
 
     constructor(private userService: UserService) {}
 
@@ -33,22 +34,29 @@ export class UserComponent implements OnInit {
         });
     }
 
+    editUser(user: User): void {
+        if (user.id !== undefined) {
+            this.userService.getUser(user.id).subscribe(data => this.selectUser = data);
+            this.edit = true;
+        }
+    }
+	
     updateUser(user: User): void {
         if (user.id !== undefined) {
-			this.userService.getUser(user.id).subscribe(data => this.selectUser = data);
             this.userService.updateUser(user.id, user).subscribe(() => this.loadUsers());
+			this.edit = false;
         }
     }
 
-	cancelEdit(user: User): void {
-		this.newUser = { name: '', email: '', phone: '' };
-	}
-	
+    cancelEdit(user: User): void {
+        this.edit = false;
+        this.newUser = { name: '', email: '', phone: '' };
+    }
+
     deleteUser(id: number): void {
         if (id !== undefined) {
             this.userService.deleteUser(id).subscribe(() => this.loadUsers());
         }
     }
-	
-	
+
 }

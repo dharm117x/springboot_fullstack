@@ -45,7 +45,7 @@
             <td>{{ user.email }}</td>
             <td>{{ user.phone }}</td>
             <td>
-              <button class="btn btn-sm btn-warning me-2" (click)="updateUser(user)">Update</button>
+              <button class="btn btn-sm btn-warning me-2" (click)="editUser(user)">Update</button>
               <button *ngIf="user.id" class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
             </td>
           </tr>
@@ -55,7 +55,7 @@
   </div>
 
   <!-- Update Form -->
-  <div *ngIf="selectUser && selectUser.id" class="card mt-4">
+  <div *ngIf="selectUser && selectUser.id && edit" class="card mt-4">
     <div class="card-header">
       <h2 class="card-title">Update User :: {{ selectUser.name }}</h2>
     </div>
